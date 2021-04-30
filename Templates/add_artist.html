@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block add_artist %}
+
+<head>
+    <title>Add Artist</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <!-- <div class="col-md-6">
+                <form action="{% url 'slick_service:add_artist' %}" method="POST">
+                    {% csrf_token %}
+                    <label for="artist_name">Artist Name</label>
+                    <input type="text" name="artist_name" required><br>
+
+                    <label for="music_style">Music Style</label>
+                    <input type="text" name="music_style" required><br>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                {% if msg %}
+                <h3>{{ msg }}</h3>
+                {% endif %}
+            </div> -->
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 38rem; margin-top: 50%;">
+                        <div class="card-header font-weight-bold">Artist Data</div>
+                        <div class="card-body">
+                            <form action="{% url 'slick_service:add_artist' %}" method="POST">
+                                {% csrf_token %}
+                                <label for="artist_name">Artist Name</label>
+                                <input type="text" name="artist_name" required><br>
+            
+                                <label for="music_style">Music Style</label>
+                                <input type="text" class="mb-3" name="music_style" required><br>
+            
+                                <button type="submit" class="btn-sm btn-light">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+</body>
+{% endblock %}

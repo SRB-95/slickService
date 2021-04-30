@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block album_detail %}
+
+<head>
+    <title>Album Deatail</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3" style="width: 18rem;">
+                    <div class="card-header">{{ artist_data }}</div>
+                    <div class="card-body text-center">
+                        <div style="display: inline;">
+                            <span style="float: left;">Singer Name:</span>
+                            <h3 style="float: left;"> {{ artist_data.artist_name }}</h3>
+                        </div>
+                        <div>
+                            <span style="float: left; font-size: medium;">Music Type:</span>
+                            <h3 style="float: left;"> {{ artist_data.music_style }}</h3>
+                        </div>
+                        <div><a href="#" class="btn btn-light">Update</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</body>
+{% endblock %}

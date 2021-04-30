@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block add_album %}
+
+<head>
+    <title>Add Album</title>
+</head>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <!-- <form action="{% url 'slick_service:add_album' %}" method="POST">
+                {% csrf_token %}
+                <label for="album_name">Album Name</label>
+                <input type="text" name="album_name" required> <br>
+
+                <label for="release_date">Release Date</label>
+                <input type="date" name="release_date" required>
+
+                <select name="ref_artist">
+                    {% for artist in all_artist %}
+                    <option value="{{ artist.id }}">{{ artist }}</option>
+                    {% endfor %}
+                </select><br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form> -->
+            <div class="card text-white bg-primary mb-3" style="margin-top: 30%;">
+                <div class="card-header font-weight-bold">Album Data</div>
+                <div class="card-body">
+                    <form action="{% url 'slick_service:add_album' %}" method="POST">
+                        {% csrf_token %}
+                        <label for="album_name">Album Name</label>
+                        <input type="text" name="album_name" required> <br>
+        
+                        <label for="release_date">Release Date</label>
+                        <input type="date" name="release_date" required>
+        
+                        <select name="ref_artist">
+                            {% for artist in all_artist %}
+                            <option value="{{ artist.id }}">{{ artist }}</option>
+                            {% endfor %}
+                        </select><br>
+                        <button type="submit" class="btn btn-light">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+{% endblock %}

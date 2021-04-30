@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block home %}
+
+<head>
+    <title>Home</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        {% if messages %}
+        {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        <div class="row">
+            <div class="col-md-12">
+                {% for data in artist_name %}
+                <div class="col-md-4 mt-3" style="float:left;">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 28rem;">
+                        <div class="card-body">
+                            <h4 style="float: left;">{{ data }}</h4>
+                            <a href="http://127.0.0.1:8000/album_detail/{{ data.id }}" id="{{ data.id }}"
+                                onclick="get_detail(this.id)" type="submit" class="btn btn-light ml-3 mb-4">Detail</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function get_detail(id) {
+        var artist_id = id
+        console.log(artist_id, "Button clicked")
+        $.ajax({
+            type: "POST",
+            url: "/album_detail/" + artist_id,
+            data: {
+                "artist_id": artist_id
+            },
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            success: function (data) {
+                console.log(data.artist_id)
+            },
+            error: function (err) {
+                console.log("I am Error")
+            }
+        })
+    }
+</script>
+{% endblock %}

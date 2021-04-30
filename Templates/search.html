@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block search %}
+
+<body>
+    {% if user_ref|length < 1 %} 
+    <p>No Search results:</p>
+    Your Search query: <b> {{ search_query }} </b> did not match any documents. <br>
+    Suggestions: <br>
+    <ul>
+        <li>Make sure that all words are spelled correctly.</li>
+        <li>Try different keywords.</li>
+        <li>Try more general keywords.</li>
+    </ul>
+    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4"></div>
+                {% for user_data in user_ref %}
+                <div class="col-md-4">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                            <h4 style="float: left;">{{ user_data }}</h4>
+                            <a href="http://127.0.0.1:8000/album_detail/{{ user_data.id }}" id="{{ user_data.id }}" onclick="get_detail(this.id)" type="submit"
+                                class="btn btn-light ml-3 mb-4">Detail</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor%}
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
